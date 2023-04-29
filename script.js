@@ -15,12 +15,19 @@ document.getElementById("sign-btn").addEventListener("click", ()=>{
         }
        
        document.getElementById("err").style.display="flex";
+       document.getElementById("my-form").action = "";
     }else{
         if(document.getElementById("err").style.display=="flex"){
             document.getElementById("err").style.display="none";
         }
-        
-        document.getElementById("success").style.display="flex";
+
+        if(passsword!=confirm_pass){
+            alert("Password is not correct!");
+            document.getElementById("my-form").action = "";
+
+        }else{
+            document.getElementById("success").style.display="flex";
+        document.getElementById("my-form").action = "./profile.html";
 
         
         var obj = {fullname: username, email: email, passsword: passsword};
@@ -28,21 +35,8 @@ document.getElementById("sign-btn").addEventListener("click", ()=>{
         var obj2= JSON.stringify(obj);
 
         localStorage.setItem("user", obj2);
+        }
         
-
-        
-
-
-        // var obj = JSON.parse(localStorage.getItem("user"));
-        
-        // var n = obj.fullname ;
-        // var e = obj.email;
-        // var pass = obj.passsword;
-
-        // function call(n,e,pass){
-
-        // }
-
     }
 })
     
